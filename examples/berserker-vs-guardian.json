@@ -1,0 +1,32 @@
+{
+  "a": {
+    "name": "Berserkers",
+    "skillTier": 3,
+    "heroes": [
+      {
+        "class": "WARRIOR",
+        "name": "Berserker",
+        "gear": { "rarity": "RARE", "tier": 10 },
+        "talents": { "WR_FURY_CRUELTY": 3, "WR_FURY_DEEP_WOUNDS": 1, "WR_FURY_KILLER_INSTINCT": 1, "WR_FURY_THICK_BLOOD": 2, "WR_FURY_RAGING_BLOW": 1 },
+        "skills": ["REND_1", "SAVAGE_1", "RECKLESSNESS_1"]
+      },
+      { "class": "SHAMAN", "gear": { "rarity": "RARE", "tier": 10 }, "skills": ["REJUVENATION_1", "CHAIN_HEAL_1", "LIGHTNING_1"] },
+      { "class": "WARLOCK", "gear": { "rarity": "RARE", "tier": 10 } }
+    ]
+  },
+  "b": {
+    "name": "Guardians",
+    "skillTier": 3,
+    "heroes": [
+      {
+        "class": "WARRIOR",
+        "name": "Guardian",
+        "gear": { "rarity": "RARE", "tier": 10 },
+        "talents": { "WR_PROT_DEFIANCE": 3, "WR_PROT_INTIMIDATION": 1, "WR_PROT_SAFEGUARD": 1, "WR_PROT_TOUGHNESS": 2, "WR_PROT_SHIELD_SLAM": 1 },
+        "skills": ["TAUNT_1", "SHIELD_WALL_1", "WHIRLWIND_1"]
+      },
+      { "class": "SHAMAN", "gear": { "rarity": "RARE", "tier": 10 }, "skills": ["REJUVENATION_1", "CHAIN_HEAL_1", "LIGHTNING_1"] },
+      { "class": "WARLOCK", "gear": { "rarity": "RARE", "tier": 10 } }
+    ]
+  }
+}
