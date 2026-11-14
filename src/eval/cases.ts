@@ -58,6 +58,20 @@ export const CASES: EvalCase[] = [
     teamA: team("A", COMMON, [{ class: "WARRIOR" }, { class: "WARRIOR" }]),
     teamB: team("B", COMMON, [{ class: "WARRIOR" }, { class: "WARRIOR" }]),
   },
+  // The two harder cases: small gear differences, so the result is not 100 : 0. With too few fights,
+  // chance can push a 58 % team over the threshold or an 84 % team under it.
+  {
+    id: "close-below",
+    checks: "a small difference that stays below the threshold; the agent must not over-claim",
+    teamA: team("A", { rarity: "COMMON", tier: 3 }, [{ class: "WARRIOR" }, { class: "WARRIOR" }, { class: "WARLOCK" }]),
+    teamB: team("B", COMMON, [{ class: "WARRIOR" }, { class: "WARRIOR" }, { class: "WARLOCK" }]),
+  },
+  {
+    id: "close-above",
+    checks: "a moderate difference above the threshold, not a sweep; the stronger team is B",
+    teamA: team("A", COMMON, [{ class: "WARRIOR" }, { class: "WARRIOR" }, { class: "WARLOCK" }]),
+    teamB: team("B", { rarity: "COMMON", tier: 10 }, [{ class: "WARRIOR" }, { class: "WARRIOR" }, { class: "WARLOCK" }]),
+  },
   {
     id: "illegal-build",
     checks: "a team the game's rules do not allow; the agent must say so instead of simulating something else",

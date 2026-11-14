@@ -112,7 +112,7 @@ Výchozí model je `sonnet`. Běhy se počítají do limitů předplatného; na 
 
 Ukázkový report ze skutečného běhu: `examples/reports/warriors-vs-warlocks.md` (4 kola, 5 zápasů, 53 s).
 
-### 6. Měření — první kolo hotovo
+### 6. Měření — hotovo
 
 Sada otázek, u kterých správnou odpověď spočítá sám simulátor (bez modelu). Agent dostane každou otázku několikrát, pokaždé od nuly, a jeho odpověď se automaticky porovná.
 
@@ -122,15 +122,33 @@ npm run eval -- --truth-only        jen spočítat správné odpovědi, agenta n
 npm run eval -- --only mirror --reps 1
 ```
 
-Výsledek 14. 11. 2026 (model sonnet, 4 otázky × 3 běhy): **12 z 12 správně**, všechny běhy se shodly. Průměrně 2,9 kola, 16 s a 0,022 USD na běh v cenách API (nic se neplatilo). Souhrn je v `examples/evals/2026-11-14-sonnet.md`.
+Výsledky 14. 11. 2026, model sonnet, 6 otázek × 3 běhy: **18 z 18 správně**, všechny běhy se shodly.
 
-Záznamy ukázaly, že agent pokaždé simuloval přesně zadané týmy se správnou výbavou. Jednou mu report neprošel kontrolou tvaru a sám ho opravil.
+| Kolo | Otázky | Správně | Na běh (průměr) | Souhrn |
+|---|---|---|---|---|
+| snadné | rozdíl výbavou, rozdíl třídou, dva stejné týmy, nelegální build | 12 z 12 | 2,9 kola, 16 s, 0,022 USD | `examples/evals/2026-11-14-sonnet.md` |
+| těžší | malý rozdíl pod hranicí (58 %), střední rozdíl nad hranicí (85 %) | 6 z 6 | 2,2 kola, 15 s, 0,018 USD | `examples/evals/2026-11-14-sonnet-harder.md` |
 
-Omezení: otázky jsou zatím snadné (rozdíl 100 : 0 nebo jasná chyba v buildu). Ověřují, že agent funguje, ale k porovnání modelů nebo nastavení jsou málo citlivé. K tomu chybí těžší otázky, například zápas, o kterém rozhoduje strana arény nebo časový limit.
+Ceny jsou v cenách API; nic se neplatilo, běhy šly přes předplatné.
 
-### 7. Prezentace
+Záznamy běhů ukázaly:
+- agent pokaždé simuloval přesně zadané týmy se správnou výbavou,
+- pouštěl 100–200 soubojů, ne jen pár,
+- u těsného zápasu sám poznal, že rozhoduje strana arény („tým vlevo vyhrál 93 ze 100"),
+- jednou mu report neprošel kontrolou tvaru a sám ho opravil.
 
-README v angličtině, ukázkové výstupy, krátké video.
+Omezení: ani těžší otázky agenta nepotrápily. Měření dokazuje, že agent funguje spolehlivě, ale k porovnání dvou modelů nebo nastavení by potřebovalo otázky, na kterých agent občas chybuje.
+
+### 7. Prezentace — vynecháno
+
+README v angličtině a ukázkové výstupy jsou hotové. Video jsme se rozhodli nedělat.
+
+## Stav: projekt uzavřen 14. 11. 2026
+
+Kdyby se v budoucnu pokračovalo, nabízí se:
+- těžší otázky do měření, aby šlo porovnávat modely,
+- první ostrý běh motoru `api` (potřebuje klíč ke Claude API),
+- nástroje navíc: rozpad damage po skillech, turnaj „každý s každým".
 
 ## Jak to spustit
 

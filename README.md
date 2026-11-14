@@ -2,7 +2,7 @@
 
 Balance tooling for the mobile game Dungeon Defend, built around a PvP simulator that runs the game's real server-side combat code. The goal is an LLM agent that finds overpowered team compositions before players do, explains why they win, and verifies a proposed fix by simulation.
 
-**Status:** work in progress. The simulator, the MCP server and the agent work, and a first evaluation passed 12 of 12 runs. See [PLAN.md](PLAN.md) (in Czech) for the roadmap, [examples/reports/warriors-vs-warlocks.md](examples/reports/warriors-vs-warlocks.md) for a report from a real run (in Czech, the language of the question), and [examples/evals/2026-11-14-sonnet.md](examples/evals/2026-11-14-sonnet.md) for the evaluation.
+**Status:** complete as of 2026-11-14. The simulator, the MCP server and the agent work, and the agent answered 18 of 18 evaluation runs correctly. See [PLAN.md](PLAN.md) (in Czech) for the build log, [examples/reports/warriors-vs-warlocks.md](examples/reports/warriors-vs-warlocks.md) for a report from a real run (in Czech, the language of the question), and [examples/evals/](examples/evals/) for the evaluations.
 
 ## How it works
 
@@ -101,6 +101,15 @@ npm run eval -- --truth-only   # compute the expected answers only (no model, fr
 - **Coverage in both directions.** Besides clear wins, a mirror match checks that the agent does not invent a winner, and an illegal build checks that it refuses instead of simulating something else.
 - **Failures kept apart.** A run that ends before answering (process error, usage limit, round limit) is reported separately and never counted as a wrong answer. Every run is saved in full so a surprising score can be traced.
 
-First result (2026-11-14, `sonnet`, 4 cases × 3 runs): **12 of 12 correct**, all runs agreeing, 2.9 rounds, 16 s and $0.022 per run at API list prices. The records show the agent simulated exactly the specified teams every time, and once corrected a report that failed schema validation. The cases are easy so far, so this shows the agent works rather than separating models; harder cases (matches decided by arena side or the time limit) are the next step.
+Results (2026-11-14, `sonnet`, 3 runs per case, each from scratch):
+
+| Cases | Correct | Per run (average) |
+|---|---|---|
+| clear win by gear, clear win by class, identical teams, illegal build | 12 of 12 | 2.9 rounds, 16 s, $0.022 |
+| small gap below the threshold (58 %, mostly decided by arena side), moderate gap above it (85 %) | 6 of 6 | 2.2 rounds, 15 s, $0.018 |
+
+Costs are at API list prices; nothing was charged. All runs of a case agreed. The saved records show the agent simulated exactly the specified teams every time, ran 100–200 fights rather than a handful, pointed out on its own when the arena side decided a close match, and once corrected a report that failed schema validation.
+
+Limitation: no case made the agent fail, so these results show that it works reliably but cannot yet tell two models or settings apart. That would need cases near the edge of its ability.
 
 The game itself is not part of this repository, so the simulator, the server and their tests cannot run without access to it.

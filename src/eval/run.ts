@@ -3,7 +3,7 @@
 //   npm run eval                       all cases, 3 runs each
 //   npm run eval -- --reps 1 --only mirror
 //
-// Options: --reps 3   --only <case id>   --model sonnet   --effort medium   --max-rounds 8
+// Options: --reps 3   --only <case id>[,<case id>...]   --model sonnet   --effort medium   --max-rounds 8
 //          --truth-only   only compute the right answers, do not run the agent (free)
 //
 // For every case the simulator first computes the right answer by itself. Then the agent gets the
@@ -56,7 +56,8 @@ async function main() {
   });
   const reps = Number(values.reps ?? 3);
   const options = { model: values.model ?? "sonnet", effort: (values.effort ?? "medium") as Effort, maxRounds: Number(values["max-rounds"] ?? 8) };
-  const cases = CASES.filter((evalCase) => !values.only || evalCase.id === values.only);
+  const only = values.only?.split(",").map((id) => id.trim());
+  const cases = CASES.filter((evalCase) => !only || only.includes(evalCase.id));
   if (cases.length === 0) throw new Error(`No case "${values.only}". Cases: ${CASES.map((evalCase) => evalCase.id).join(", ")}.`);
 
   // ---- the right answers, from the simulator alone
