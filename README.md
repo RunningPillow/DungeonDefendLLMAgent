@@ -2,7 +2,7 @@
 
 Balance tooling for the mobile game Dungeon Defend, built around a PvP simulator that runs the game's real server-side combat code. The goal is an LLM agent that finds overpowered team compositions before players do, explains why they win, and verifies a proposed fix by simulation.
 
-**Status:** complete as of 2026-11-14. The simulator, the MCP server and the agent work, and the agent answered 18 of 18 evaluation runs correctly. See [PLAN.md](PLAN.md) (in Czech) for the build log, [examples/reports/warriors-vs-warlocks.md](examples/reports/warriors-vs-warlocks.md) for a report from a real run (in Czech, the language of the question), and [examples/evals/](examples/evals/) for the evaluations.
+**Status:** complete as of 2026-11-14. The simulator, the MCP server and the agent work, and the agent answered 18 of 18 evaluation runs correctly. See [examples/reports/warriors-vs-warlocks-en.md](examples/reports/warriors-vs-warlocks-en.md) for a report from a real run, [examples/evals/](examples/evals/) for the evaluations, and [PLAN.md](PLAN.md) (in Czech) for the build log. The agent answers in the language of the question; [the same question asked in Czech](examples/reports/warriors-vs-warlocks-cs.md) reached the same conclusion.
 
 ## How it works
 

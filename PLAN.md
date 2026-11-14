@@ -110,7 +110,7 @@ npm run agent -- "..." --engine api
 
 Výchozí model je `sonnet`. Běhy se počítají do limitů předplatného; na konci běhu se vypíše, kolik z limitu je vyčerpáno.
 
-Ukázkový report ze skutečného běhu: `examples/reports/warriors-vs-warlocks.md` (4 kola, 5 zápasů, 53 s).
+Ukázkové reporty ze skutečných běhů na stejnou otázku: česky `examples/reports/warriors-vs-warlocks-cs.md` (4 kola, 5 zápasů, 53 s) a anglicky `examples/reports/warriors-vs-warlocks-en.md` (4 kola, 5 zápasů, 73 s). Oba došly ke stejnému závěru.
 
 ### 6. Měření — hotovo
 
@@ -200,7 +200,7 @@ MCP server se nespouští ručně. Spustí si ho Claude Code (nebo později ná�
 Výsledky platí pro kód hry zkompilovaný 14. 11. 2026 ve 12:51. Po každé změně boje se mohou změnit; ten den se tak stalo.
 
 - **Dva stejné týmy warriorů bez skillů a talentů:** zhruba 50 : 50 a strany arény jsou vyrovnané (3 × 400 soubojů). Ve starším sestavení téhož dne vyhrával vždy tým vlevo.
-- **Pět warriorů (Fury) proti pěti warlockům (Destruction), se skilly a talenty:** do výbavy EPIC 30 vyhraje vždy tým vlevo, takže sílu týmů nejde určit. U LEGENDARY 50 vyhrávají warlockové 65 % soubojů a jako jediní i zprava. Zjistil to agent, celý report je v `examples/reports/warriors-vs-warlocks.md`.
+- **Pět warriorů (Fury) proti pěti warlockům (Destruction), se skilly a talenty:** do výbavy EPIC 30 vyhraje vždy tým vlevo, takže sílu týmů nejde určit. U LEGENDARY 50 vyhrávají warlockové 65 % soubojů a jako jediní i zprava. Zjistil to agent, celý report je v `examples/reports/warriors-vs-warlocks-cs.md`.
 
 ## Otevřené otázky
 
